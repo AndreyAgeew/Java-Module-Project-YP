@@ -6,7 +6,6 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("На скольких человек разделить счет?");
         Scanner scanner = new Scanner(System.in);
-        Calculator calculator = new Calculator();
         int peopleCounter;
         do {
             peopleCounter = scanner.nextInt();
@@ -15,7 +14,7 @@ public class Main {
             }
         } while (peopleCounter <= 1);
 
-
+        Calculator calculator = new Calculator(peopleCounter);
         calculator.start();
 
     }
