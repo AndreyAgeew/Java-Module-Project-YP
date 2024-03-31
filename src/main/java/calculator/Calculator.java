@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Calculator {
     private List<Item> items = new ArrayList<>();
     private double totalAmount = 0;
-    private int peopleCounter;
+    final private int peopleCounter;
 
     public Calculator(int peopleCounter) {
         this.peopleCounter = peopleCounter;
@@ -42,7 +42,7 @@ public class Calculator {
     }
 
     private void displayTotalAmountPerPerson() {
-        double totalAmount = getTotalAmount()/peopleCounter;
+        double totalAmount = getTotalAmount() / peopleCounter;
         int rubles = (int) totalAmount;
         int kopecks = (int) ((totalAmount - rubles) * 100);
 
@@ -92,6 +92,10 @@ public class Calculator {
             System.out.println("Введите стоимость товара (в формате рубли.копейки):");
             double price = scanner.nextDouble();
             scanner.nextLine();
+            if (price <= 0) {
+                System.out.println("Товар не может столько стоить!");
+                continue;
+            }
 
             Item item = new Item(itemName, price);
             addItem(item);
